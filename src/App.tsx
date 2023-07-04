@@ -18,10 +18,10 @@ function App (): JSX.Element {
 			const scrollX = (x: number) => {
 				setTimeout(() => {
 					scrollTo(x)
-				}, 600)
+				}, 400)
 			}
 			if (width < 768) {
-				scrollX(630)
+				scrollX(830)
 			} else if (width < 1024) {
 				scrollX(350)
 			} else {
