@@ -2,19 +2,16 @@ import { useState } from 'react'
 import { Modal } from 'flowbite-react'
 
 export function MuseumLocation ({
-	children,
-	museum
+	children
 }: {
 	children: JSX.Element
-	museum: number
 }): JSX.Element {
 	const [visible, setVisible] = useState<boolean>(false)
 
 	return (
 		<>
 			<div
-				style={{ left: `${museum}px` }}
-				className='absolute top-[42%] cursor-pointer'
+				className='absolute top-[42%] left-[70%] cursor-pointer'
 				onClick={() => setVisible(true)}
 			>
 				{children}

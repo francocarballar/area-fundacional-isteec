@@ -1,4 +1,4 @@
-import { useRef, useEffect, MutableRefObject, useState } from 'react'
+import { useRef, useEffect, MutableRefObject } from 'react'
 import { useWindowSize } from 'usehooks-ts'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { CenterLocation } from './components/CenterLocation'
@@ -9,12 +9,7 @@ import { MuseumLocation } from './components/MuseumLocation'
 
 function App (): JSX.Element {
 	const { width } = useWindowSize()
-	const [left, setLeft] = useState<number>(0)
-	const [center, setCenter] = useState<number>(0)
-	const [right, setRight] = useState<number>(0)
-	const [museum, setMuseum] = useState<number>(0)
 	const containerRef: MutableRefObject<HTMLDivElement | null> = useRef(null)
-	const imgRef: MutableRefObject<HTMLImageElement | null> = useRef(null)
 
 	useEffect(() => {
 		const container = containerRef.current
@@ -35,24 +30,6 @@ function App (): JSX.Element {
 		}
 	}, [containerRef, width])
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	useEffect(() => {
-		const img = imgRef.current
-		if (img !== null) {
-			const widthImg = img.width
-			if (widthImg !== 0) {
-				const left = widthImg / 2 / 2 + 70
-				setLeft(left)
-				const center = widthImg / 2 - 20
-				setCenter(center)
-				const right = widthImg - 250
-				setRight(right)
-				const museum = widthImg / 2 + 315
-				setMuseum(museum)
-			}
-		}
-	})
-
 	return (
 		<ScrollContainer
 			className='h-full min-h-screen max-h-screen w-full overflow-x-auto lg:overflow-x-hidden overflow-y-hidden'
@@ -60,23 +37,22 @@ function App (): JSX.Element {
 			innerRef={containerRef}
 			vertical={false}
 		>
-			<div className='min-w-full min-h-screen relative'>
+			<div className='w-full min-w-fit h-full min-h-fit relative'>
 				<img
-					ref={imgRef}
 					src='/mapa-area-fundacional.webp'
 					alt='Mapa del área fundacional'
 					className='w-auto max-w-none min-h-screen object-contain object-center'
 				/>
-				<LeftLocation left={left}>
+				<LeftLocation>
 					<IconLocation width='45px' />
 				</LeftLocation>
-				<CenterLocation center={center}>
+				<CenterLocation>
 					<IconLocation width='45px' />
 				</CenterLocation>
-				<MuseumLocation museum={museum}>
+				<MuseumLocation>
 					<IconLocation width='45px' />
 				</MuseumLocation>
-				<RightLocation right={right}>
+				<RightLocation>
 					<IconLocation width='45px' />
 				</RightLocation>
 			</div>

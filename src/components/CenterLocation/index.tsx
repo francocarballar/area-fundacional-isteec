@@ -1,11 +1,9 @@
 import { MutableRefObject, useRef, useState } from 'react'
 import { Modal } from 'flowbite-react'
 export function CenterLocation ({
-	children,
-	center
+	children
 }: {
 	children: JSX.Element
-	center: number
 }): JSX.Element {
 	const [visible, setVisible] = useState<boolean>(false)
 	const video: MutableRefObject<HTMLVideoElement | null> = useRef(null)
@@ -20,8 +18,7 @@ export function CenterLocation ({
 	return (
 		<>
 			<div
-				style={{ left: `${center}px` }}
-				className='absolute top-1/2 cursor-pointer'
+				className='absolute top-1/2 left-[49%] cursor-pointer'
 				onClick={() => setVisible(true)}
 			>
 				{children}

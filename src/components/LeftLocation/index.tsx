@@ -2,19 +2,16 @@ import { useState } from 'react'
 import { Modal } from 'flowbite-react'
 
 export function LeftLocation ({
-	children,
-	left
+	children
 }: {
 	children: JSX.Element
-	left: number
 }): JSX.Element {
 	const [visible, setVisible] = useState<boolean>(false)
 
 	return (
 		<>
 			<div
-				style={{ left: `${left}px` }}
-				className='absolute top-[25%] cursor-pointer'
+				className='absolute top-[25%] left-[30%] cursor-pointer'
 				onClick={() => setVisible(true)}
 			>
 				{children}

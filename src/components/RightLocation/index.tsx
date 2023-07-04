@@ -1,11 +1,9 @@
 import { MutableRefObject, useRef, useState } from 'react'
 import { Modal } from 'flowbite-react'
 export function RightLocation ({
-	children,
-	right
+	children
 }: {
 	children: JSX.Element
-	right: number
 }): JSX.Element {
 	const [visible, setVisible] = useState<boolean>(false)
 	const video: MutableRefObject<HTMLVideoElement | null> = useRef(null)
@@ -20,8 +18,7 @@ export function RightLocation ({
 	return (
 		<>
 			<div
-				style={{ left: `${right}px` }}
-				className='absolute top-[80%] cursor-pointer'
+				className='absolute top-[80%] left-[85%] cursor-pointer'
 				onClick={() => setVisible(true)}
 			>
 				{children}
